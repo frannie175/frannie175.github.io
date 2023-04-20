@@ -1,11 +1,14 @@
 #Project created during an introduction to Python course in 2022
 
+print ("******* POKEMON TRUMP GAME ******")
 
+#game executes a trump style comparison between one identifying factor of randomly selectec pokemon
+#data was taken from pokeapi.co
 
 import requests
 import random
 
-
+#random pokemon details 
 def random_pokemon_name():
     pokemon = random.randint(1, 151)
     url = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(pokemon)
@@ -20,6 +23,7 @@ def random_pokemon_name():
     print(f"Height: - {data['height']} inches")
     return id.pop(), height.pop(), weight.pop()
 
+#opponent pokemon details
 
 def opp_pokemon_name():
     pokemon = random.randint(1, 151)
@@ -38,7 +42,7 @@ def opp_pokemon_name():
 
 def loop():
     your_pokemon = random_pokemon_name()
-
+    #gamer must choose the stat they would like to compare once they have seen their pokemon
     stat = input("What pokemon stat would you like to use? id, Height, Weight")
 
     opp_pokemon = opp_pokemon_name()
@@ -52,6 +56,7 @@ def loop():
     else:
         print("you lose")
 
+#game can be played up to three times before ending
 
 counter = 0
 while counter < 3:
