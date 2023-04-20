@@ -1,0 +1,69 @@
+#Project created during an introduction to Python course in 2022
+
+
+
+import requests
+import random
+
+
+def random_pokemon_name():
+    pokemon = random.randint(1, 151)
+    url = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(pokemon)
+    response = requests.get(url)
+    data = response.json()
+    id = {data['id']}
+    height = {data['height']}
+    weight = {data['weight']}
+    print(f"Your Pokemon's Name: {data['name']}")
+    print(f"ID: - {data['id']}")
+    print(f"Weight: - {data['weight']} lbs")
+    print(f"Height: - {data['height']} inches")
+    return id.pop(), height.pop(), weight.pop()
+
+
+def opp_pokemon_name():
+    pokemon = random.randint(1, 151)
+    url = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(pokemon)
+    response = requests.get(url)
+    data = response.json()
+    id = {data['id']}
+    height = {data['height']}
+    weight = {data['weight']}
+    print(f"Your Opponent's Pokemon's Name: {data['name']}")
+    print(f"ID: - {data['id']}")
+    print(f"Weight: - {data['weight']} lbs")
+    print(f"Height: - {data['height']} inches")
+    return id.pop(), height.pop(), weight.pop()
+
+
+def loop():
+    your_pokemon = random_pokemon_name()
+
+    stat = input("What pokemon stat would you like to use? id, Height, Weight")
+
+    opp_pokemon = opp_pokemon_name()
+
+    if stat == 'Weight' and your_pokemon >= opp_pokemon:
+        print("you win")
+    elif stat == 'Height' and your_pokemon >= opp_pokemon:
+        print("You win")
+    elif stat == 'id' and your_pokemon >= opp_pokemon:
+        print("You win")
+    else:
+        print("you lose")
+
+
+counter = 0
+while counter < 3:
+    loop()
+    repeat = input("Would you like to replay? y/n :")
+    if repeat == 'y':
+        counter += 1
+    elif repeat == 'y' and counter == 3:
+        print("You have reached the maximum number. Thanks for playing")
+    else:
+        print("Thanks for playing")
+        break
+    print("Thanks for playing")
+
+
